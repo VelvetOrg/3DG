@@ -1,1 +1,8 @@
-#include <stdio.h> int main(int argc, char** argv) { printf("Yo."); getchar(); return 0; }
+#include "window_manager.h"
+
+int main(int argc, char** argv)
+{
+	InstanciateWindow();
+
+	return 0;
+}

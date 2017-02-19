@@ -1,9 +1,9 @@
 #include <iostream>
 #include "Mathf.h"
-using namespace std;
 
+const int value = 129.223;
 int main(int argc, char** argv) {
-	cout << Mathf.Sin(50) << endl;
+	std::cout << Mathf.Tan(90);
 	getchar();
 	return 0; 
 }

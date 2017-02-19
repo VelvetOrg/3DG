@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="types.h" />
     <ClInclude Include="window_manager.h" />
     <ClInclude Include="window_config.h" />
     <ClInclude Include="window_os_win32_internal.h" />

@@ -1,10 +1,5 @@
 #pragma once
 #include <math.h>
-#include <numeric>
-#include <algorithm>
-#include <random>
-#include <iterator>
-#include <time.h>
 
 static class Mathf
 {

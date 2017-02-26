@@ -8,13 +8,14 @@ public:
 	const float TAU = 6.2831852f;
 	const float TRUNCATION = 0.005f;
 	const float EPSILON = 0.0000001f;
-	const float PositiveInfinity = std::numeric_limits<float>::infinity();
-	const float NegativeInfinity = -(PositiveInfinity);
+	/*const float PositiveInfinity = std::numeric_limits<float>::infinity();
+	const float NegativeInfinity = -(PositiveInfinity);*/
 	const float DegToRad = 6.2831852f / 360;
 	const float RadToDeg = 360 / 6.2831852f;
 
 	//Wrapper math functions
 	template <typename Type> inline double Sqrt(Type value) { return sqrt<Type>(value); }
+	float Sqrtf(float value) { return sqrtf((float)value); }
 	inline unsigned int Factorial(unsigned int value) {
 		unsigned int result = 1;
 		for (unsigned int i = 1; i <= value; i++)

@@ -44,7 +44,7 @@ float Vector3::Dot(const Vector3& a, const Vector3& b)
 
 Vector3 Vector3::Cross(const Vector3& a, const Vector3& b)
 {
-	return Vector3(((a.y * b.z) - (a.z * b.y)),((a.z * b.x) - (a.x - b.z)),  ((a.x * b.y)  - (a.y * b.x)));
+	return Vector3(((a.y * b.z) - (a.z * b.y)), ((a.z * b.x) - (a.x - b.z)), ((a.x * b.y) - (a.y * b.x)));
 }
 
 //Overloaded operators

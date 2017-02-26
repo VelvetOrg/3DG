@@ -120,6 +120,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="debug.h" />
+    <ClInclude Include="mathf.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="window_manager.h" />
     <ClInclude Include="window_config.h" />

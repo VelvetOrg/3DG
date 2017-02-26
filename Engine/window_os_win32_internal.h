@@ -4,33 +4,33 @@
 //Literally all crap code that needs to be rewritten
 namespace
 {
-	LRESULT CALLBACK winCallback(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
+	LRESULT CALLBACK windowsCallback(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
 	{
 		LRESULT ret = NULL;
 
-			 if (message == WM_DESTROY || message == WM_CLOSE) { OutputDebugStringA("Closed"); } //Window closed
+		if (message == WM_DESTROY || message == WM_CLOSE) { OutputDebugStringA("Closed"); } //Window closed
 		else if (message == WM_ACTIVATEAPP) { OutputDebugStringA("Active"); } //Window is focused
+		
 		ret = DefWindowProcA(window, message, wparam, lparam);
-
 		return ret;
 	}
 
-	void InstanciateWindow()
+	void InstantiateWindow()
 	{
 		WNDCLASS window = {};
 
 		window.style = CS_OWNDC; //Don't bother getting and releasing window dc
 		window.hInstance = GetModuleHandle(NULL);
-		window.lpfnWndProc = winCallback;
-		window.lpszClassName = "Title";
+		window.lpfnWndProc = windowsCallback;
+		window.lpszClassName = (LPCWSTR)"Title";
 
-		if (!RegisterClassA(&window)) { OutputDebugStringA("Could not register window"); }
+		if (!RegisterClass(&window)) { OutputDebugStringA("Could not register window"); }
 		else
 		{
 			HWND windowHandle = CreateWindowEx(
 				NULL,
 				window.lpszClassName,
-				"Name",
+				(LPCWSTR)"Name",
 				WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 				CW_USEDEFAULT,
 				CW_USEDEFAULT,

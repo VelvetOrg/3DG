@@ -1,13 +1,12 @@
 #pragma once
 #include <math.h>
-
 static class Mathf
 {
 public:
 	//Constant values
 	const float PI = 3.1415926f;
 	const float TAU = 6.2831852f;
-	const float TRUNCATION = 0.005f; 
+	const float TRUNCATION = 0.005f;
 	const float EPSILON = 0.0000001f;
 	const float PositiveInfinity = std::numeric_limits<float>::infinity();
 	const float NegativeInfinity = -(PositiveInfinity);
@@ -30,7 +29,7 @@ public:
 		value = value * (1.5f - half * value * value);
 		return value;
 	}
-	template <typename Type, typename Type2> inline double Pow(Type value, Type2 degree) { 
+	template <typename Type, typename Type2> inline double Pow(Type value, Type2 degree) {
 		return pow(value, degree);
 	}
 	template <typename Type> inline Type Root(Type value, Type degree) { return Pow<Type>(value, 1 / degree); }

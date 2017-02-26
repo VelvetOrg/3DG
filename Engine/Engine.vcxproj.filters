@@ -1,48 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Window">
+    <Filter Include="Code">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Code\Window">
       <UniqueIdentifier>{c0e1bf61-1d6d-446b-a019-999278df4b65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Helper">
+    <Filter Include="Code\Helper">
       <UniqueIdentifier>{76e6b2d9-80b1-46a7-b79e-45bd8bd4499b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Helper\Headers">
+      <UniqueIdentifier>{9fb73914-63da-459d-861f-d40a4b511b9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Helper\Source">
+      <UniqueIdentifier>{24f5b63f-8fa6-4980-a2c9-fafd2deedbbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Window\Headers">
+      <UniqueIdentifier>{c2e9b418-240f-4d4b-af3a-287392bad1d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Window\Source">
+      <UniqueIdentifier>{40dc3027-6dac-4dfe-a58e-0cda48d79e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sandbox">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window_config.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="window_os_win32_internal.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="window_manager.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="types.h">
-      <Filter>Header Files\Helper</Filter>
-    </ClInclude>
     <ClInclude Include="debug.h">
-      <Filter>Header Files\Helper</Filter>
+      <Filter>Code\Helper\Headers</Filter>
     </ClInclude>
     <ClInclude Include="mathf.h">
-      <Filter>Header Files\Helper</Filter>
+      <Filter>Code\Helper\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Code\Helper\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="window_config.h">
+      <Filter>Code\Window\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="window_manager.h">
+      <Filter>Code\Window\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="window_os_win32_internal.h">
+      <Filter>Code\Window\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="vector2.h">
+      <Filter>Code\Helper\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3.h">
+      <Filter>Code\Helper\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="colour.h">
+      <Filter>Code\Helper\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Sandbox</Filter>
+    </ClCompile>
+    <ClCompile Include="vector2.cpp">
+      <Filter>Code\Helper\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="vector3.cpp">
+      <Filter>Code\Helper\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="colour.cpp">
+      <Filter>Code\Helper\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

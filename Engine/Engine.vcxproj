@@ -119,15 +119,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="colour.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="mathf.h" />
     <ClInclude Include="types.h" />
+    <ClInclude Include="vector2.h" />
+    <ClInclude Include="vector3.h" />
     <ClInclude Include="window_manager.h" />
     <ClInclude Include="window_config.h" />
     <ClInclude Include="window_os_win32_internal.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="colour.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="vector2.cpp" />
+    <ClCompile Include="vector3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

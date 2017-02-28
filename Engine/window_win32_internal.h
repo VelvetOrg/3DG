@@ -1,5 +1,8 @@
-#pragma once
-#include <windows.h>
+#ifndef _WINDOW_WIN32_INTERNAL_H
+#define _WINDOW_WIN32_INTERNAL_H
+
+/*
+#include <windows.h> //Need a cleaner way, don't just include all of it cunt
 
 //Literally all crap code that needs to be rewritten
 namespace
@@ -58,3 +61,5 @@ namespace
 		}
 	}
 }
+*/
+#endif // !_WINDOW_WIN32_INTERNAL_H

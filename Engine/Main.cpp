@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 	file.Write("Path is: "); file.Write(file.GetPath()); file.WriteC('\n');
 	file.WriteLine(__FILE__);
 	file.WriteLine(__FUNCTION__);
-
+	
 	GE_CHAR* buf = new GE_CHAR[4];
 	Str::IntToStr(__LINE__, buf, 4);
 	file.WriteLine(buf);

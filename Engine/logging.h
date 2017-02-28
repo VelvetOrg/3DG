@@ -1,41 +1,17 @@
 #ifndef _LOGGING_H
 #define _LOGGING_H
 
+/*
 #include "timing.h"
 #include "types.h"
+#include "str.h"
 
 #include <stdio.h>
 
 //Default log file properties
 #define GE_LOGGING_DEFAULT_LOG "engine.tlog"
-#define GE_LOGGING_MODE "w"
-
-//Character literals
-#define GE_STR_LITERAL_CARRIAGE_RETURN '\r'
-#define GE_STR_LITERAL_HORIZONTALTAB '\t'
-#define GE_STR_LITERAL_SINGLE_QUOTE '\''
-#define GE_STR_LITERAL_DOUBLE_QUOTE '\"'
-#define GE_STR_LITERAL_VERTICALTAB '\v'
-#define GE_STR_LITERAL_BACKSPACE '\b'
-#define GE_STR_LITERAL_FORM_FEED '\f'
-#define GE_STR_LITERAL_BACKSLASH '\\'
-#define GE_STR_LITERAL_NEWLINE '\n'
-#define GE_STR_LITERAL_ALERT '\a'
-#define GE_STR_LITERAL_NULL '\0'
-
-#define GE_LOGGING_BUFFER_SIZE 256
 
 //This represents the formatting of each log line
-//Explanation of this macro madness:
-/*
-- There is a list of macros, for example:
-- GE_LOGGING_FORMAT_DATE
-- GE_LOGGING_FORMAT_TIME
-- These simply define the existence of some variable
-- The value they store is useless
-- Then the value of these is redefined to be some variable inside the function call
-- The logging format order is then placed in a sprintf_s call.
-*/
 #define GE_LOGGING_FORMAT_DATE "date"
 #define GE_LOGGING_FORMAT_TIME "time"
 #define GE_LOGGING_FORMAT_TYPE "type"
@@ -51,10 +27,10 @@
 //Stores the types of logging
 //TODO: ENUM style lookup system
 #define GE_LOGGING_TYPE_LIST \
-	X(INFO)		\
-	X(WARNING)	\
-	X(ERROR)	\
-	X(FATAL_ERROR)
+	X(Info)		\
+	X(Warning)	\
+	X(Error)	\
+	X(FatalError)
 
 enum LoggingTypes
 {
@@ -80,8 +56,11 @@ public:
 	void Close(); 
 
 	//Logging the data
-	void Write(GE_STR message, LoggingTypes logType = LoggingTypes::INFO);
-	void RawWrite(GE_STR plainText, GE_CHAR end = GE_STR_LITERAL_NEWLINE);
+#define X(n) inline void Log##n##F	(GE_STR message) { this->_Write(message, LoggingTypes::##n); };
+	GE_LOGGING_TYPE_LIST
+#undef X
+
+	void RawLog(GE_STR text, GE_CHAR end = GE_STR_LITERAL_NEWLINE);
 
 	//Statics
 	static GE_BYTE GetActiveOpenFiles(); //Gets the number of LogFiles's open at once
@@ -98,6 +77,9 @@ private:
 
 	//We need to keep track of how many LogFile instances are open at once
 	static GE_BYTE _activeOpenFiles;
+
+	//The actual write implementation
+	void _Write(GE_STR message, LoggingTypes logType);
 };
 
 //Define a macro so that logging is easy to type
@@ -110,5 +92,5 @@ private:
 #define GE_LOG_FATAL_ERROR(n)	GE_LOGGER.Write(n, FATAL_ERROR);
 
 #define GE_LOG_OPEN_FILES		LogFile::GetActiveOpenFiles()
-
+*/
 #endif // !_LOGGING_H

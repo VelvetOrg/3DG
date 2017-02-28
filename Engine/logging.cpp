@@ -1,9 +1,12 @@
+/*
 #include "logging.h"
 #include <assert.h>
 
-//Static variable initiation
-LogFile* LogFile::logging = new LogFile(GE_LOGGING_DEFAULT_LOG);
+//Setting static's default value
+LogFile* LogFile::logging = new LogFile(GE_LOGGING_DEFAULT_LOG); //New instance
+
 GE_BYTE LogFile::_activeOpenFiles = 0;
+GE_USHORT LogFile::bufferSize = 256;
 
 LogFile::LogFile(GE_STR filepath) 
 { 
@@ -14,7 +17,7 @@ LogFile::LogFile(GE_STR filepath)
 	_path = filepath;
 	_file = new FILE();
 
-	fopen_s(&_file, _path, GE_LOGGING_MODE);
+	fopen_s(&_file, _path, "w");
 
 	//Inc
 	LogFile::_activeOpenFiles++;
@@ -80,10 +83,10 @@ void LogFile::Write(GE_STR message, LoggingTypes logType)
 #define GE_LOGGING_FORMAT_DATA messageBuffer
 
 	//We need to fill a buffer to put
-	GE_CHAR* buffer = new GE_CHAR[GE_LOGGING_BUFFER_SIZE];
+	GE_CHAR* buffer = new GE_CHAR[LogFile::bufferSize];
 
 	//Format the actual buffer
-	sprintf_s(buffer, GE_LOGGING_BUFFER_SIZE, GE_LOGGING_FORMAT,
+	sprintf_s(buffer, LogFile::bufferSize, GE_LOGGING_FORMAT,
 		GE_LOGGING_FORMAT_ORDER);
 
 	//Actually write the buffer
@@ -107,3 +110,4 @@ void LogFile::RawWrite(GE_STR plainText, GE_CHAR end)
 //Getters
 GE_STR LogFile::GetPath() const { return this->_path; }
 GE_BYTE LogFile::GetActiveOpenFiles() { return LogFile::_activeOpenFiles; }
+*/

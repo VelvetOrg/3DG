@@ -122,6 +122,8 @@
   <ItemGroup>
     <ClInclude Include="debug.h" />
     <ClInclude Include="logging.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="str.h" />
     <ClInclude Include="timing.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="window_base.h" />
@@ -130,8 +132,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="file.cpp" />
     <ClCompile Include="logging.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="str.cpp" />
     <ClCompile Include="timing.cpp" />
     <ClCompile Include="window_base.cpp" />
   </ItemGroup>

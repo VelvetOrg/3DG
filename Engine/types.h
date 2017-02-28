@@ -59,4 +59,11 @@ typedef unsigned char GE_BOOL; //Later bit packing will be used
 	delete[] n;	  \
 	n = nullptr;  \
 
+//What is NULL?
+#ifdef __cplusplus
+	#define GE_NULL    0
+#else
+	#define GE_NULL    ((void *)0)
+#endif
+
 #endif // !_TYPES_H

@@ -21,6 +21,15 @@
     <Filter Include="Source Files\Window">
       <UniqueIdentifier>{384fb1e3-783f-42f6-a851-d00ca2e2d593}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Files">
+      <UniqueIdentifier>{4e1c019b-701b-44b7-849e-756d2656cd59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Types">
+      <UniqueIdentifier>{dc86951a-84b5-4aac-ae30-2059f8922970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Files">
+      <UniqueIdentifier>{1124d019-bc5a-4a57-8d0a-805eebc1c311}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types.h">
@@ -38,11 +47,17 @@
     <ClInclude Include="debug.h">
       <Filter>Header Files\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="logging.h">
-      <Filter>Header Files\Helper</Filter>
-    </ClInclude>
     <ClInclude Include="timing.h">
-      <Filter>Header Files\Helper</Filter>
+      <Filter>Header Files\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="str.h">
+      <Filter>Header Files\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="logging.h">
+      <Filter>Header Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file.h">
+      <Filter>Header Files\Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +74,12 @@
       <Filter>Source Files\Helper</Filter>
     </ClCompile>
     <ClCompile Include="timing.cpp">
+      <Filter>Source Files\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="file.cpp">
+      <Filter>Source Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="str.cpp">
       <Filter>Source Files\Helper</Filter>
     </ClCompile>
   </ItemGroup>

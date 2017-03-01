@@ -30,6 +30,12 @@
     <Filter Include="Source Files\Files">
       <UniqueIdentifier>{1124d019-bc5a-4a57-8d0a-805eebc1c311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Image Reading">
+      <UniqueIdentifier>{c8f73d78-c1ca-48d3-a68b-ce199a46514e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Image Reading">
+      <UniqueIdentifier>{42b7793b-2bf5-481a-a0b0-ab04f24ff166}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types.h">
@@ -59,6 +65,9 @@
     <ClInclude Include="file.h">
       <Filter>Header Files\Files</Filter>
     </ClInclude>
+    <ClInclude Include="pngdata.h">
+      <Filter>Header Files\Image Reading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -81,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="str.cpp">
       <Filter>Source Files\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="pngdata.cpp">
+      <Filter>Source Files\Image Reading</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

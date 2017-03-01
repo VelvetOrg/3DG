@@ -123,6 +123,7 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="logging.h" />
     <ClInclude Include="file.h" />
+    <ClInclude Include="pngdata.h" />
     <ClInclude Include="str.h" />
     <ClInclude Include="timing.h" />
     <ClInclude Include="types.h" />
@@ -135,6 +136,7 @@
     <ClCompile Include="file.cpp" />
     <ClCompile Include="logging.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pngdata.cpp" />
     <ClCompile Include="str.cpp" />
     <ClCompile Include="timing.cpp" />
     <ClCompile Include="window_base.cpp" />

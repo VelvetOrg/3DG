@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="colour.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="logging.h" />
     <ClInclude Include="file.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="window_win32_internal.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="colour.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="file.cpp" />
     <ClCompile Include="logging.cpp" />

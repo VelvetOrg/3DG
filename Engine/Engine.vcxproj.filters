@@ -68,6 +68,9 @@
     <ClInclude Include="pngreader.h">
       <Filter>Header Files\Image Reading</Filter>
     </ClInclude>
+    <ClInclude Include="colour.h">
+      <Filter>Header Files\Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="pngreader.cpp">
       <Filter>Source Files\Image Reading</Filter>
+    </ClCompile>
+    <ClCompile Include="colour.cpp">
+      <Filter>Source Files\Helper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

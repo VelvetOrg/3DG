@@ -3,6 +3,8 @@
 int main(int argc, char** argv)
 {	
 	
+	
+
 	/*
 
 	for (int i = 0; i < 8; i++) {
@@ -24,10 +26,11 @@ int main(int argc, char** argv)
 
 	*/
 
-	fclose(file);
+	PNG image;
+	//read("C:\\Users\\Ruchir Bapat\\Documents\\GitHub\\3DG\\Engine\\Assets\\PNG-Gradient.png", image);
+	read("C:\\Users\\Ruchir Bapat\\Documents\\GitHub\\3DG\\Engine\\Assets\\GridSizeFour.png", image);
 
-	fputs("\nFile closed.\n", stdout);
-	
+
 	getchar();
 	
 	return 0;

@@ -31,14 +31,14 @@ PNG Chunks are formatted like this:
 - 4 bytes for the cyclic redundancy check, computed at the end of reading
 */
 typedef struct pngchunk {
-	GE_BYTE length[4] = {};
-	GE_UCHAR chunkType[4];
+	GE_UINT length;
+	GE_UCHAR type[4];
 	std::vector<GE_BYTE> data;
 	GE_UINT cyclicRedundancyCheck;
 };
 
 typedef struct IHDR {
-	GE_BYTE length[4] = {};
+	GE_UINT length;
 	GE_UCHAR type[4] = {};
 	GE_UINT width;
 	GE_UINT height;
@@ -49,12 +49,23 @@ typedef struct IHDR {
 	GE_BYTE interlaceMethod;
 };
 
+typedef struct PLTE {
+
+};
+
 typedef struct PNG {
 	IHDR IHDR;
 	pngchunk PLTE;
 	std::vector<pngchunk> IDATs;
 	pngchunk IEND;
 	//Vector for colour data
+};
+
+typedef struct compressedDataStream {
+	GE_BYTE zlibCompFlag;
+	GE_BYTE checkBit;
+	GE_BYTE* data;
+	GE_UINT crc;
 };
 
 //Pack a 4 byte array directly into a 32 bit INT 

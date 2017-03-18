@@ -65,7 +65,7 @@
     <ClInclude Include="file.h">
       <Filter>Header Files\Files</Filter>
     </ClInclude>
-    <ClInclude Include="pngdata.h">
+    <ClInclude Include="pngreader.h">
       <Filter>Header Files\Image Reading</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,7 +91,7 @@
     <ClCompile Include="str.cpp">
       <Filter>Source Files\Helper</Filter>
     </ClCompile>
-    <ClCompile Include="pngdata.cpp">
+    <ClCompile Include="pngreader.cpp">
       <Filter>Source Files\Image Reading</Filter>
     </ClCompile>
   </ItemGroup>

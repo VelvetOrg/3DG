@@ -3,10 +3,13 @@
 
 int read(const char* filepath, PNG &png) {
 	
+#pragma region CreateFilestream
 	FILE* file = nullptr; //Filestream
 	//Stores the error code
 	errno_t	error = fopen_s(&file, filepath, "rb");
-	
+#pragma endregion
+
+#pragma region Read_IHDR
 	//Check for errors with opening filestream
 	if (error != 0x0) {
 		//Close file on failure
@@ -90,8 +93,16 @@ int read(const char* filepath, PNG &png) {
 	//Read image interlace method
 	fread(&png.IHDR.interlaceMethod, sizeof(GE_BYTE), 1, file);
 	fprintf(stdout, "Image interlace method (refer to table): %d\n", png.IHDR.interlaceMethod);
-
+#pragma endregion
 	
+	
+	GE_BYTE buffer[300] = {};
+	fread(buffer, sizeof(GE_BYTE), 300, file);
+	for (int i = 0; i < 300; i++) {
+		//fprintf(stdout, "0x%x\n", buffer[i]);
+		fprintf(stdout, "%i: %c\n", i, (char)buffer[i]);
+	}
+	fputs("\nDone.", stdout);
 	
 	//Close filestream
 	fclose(file);

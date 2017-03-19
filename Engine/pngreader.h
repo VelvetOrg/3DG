@@ -50,6 +50,8 @@ typedef struct IHDR {
 };
 
 typedef struct PLTE {
+	GE_UINT length;
+	GE_UCHAR type[4] = {};
 
 };
 

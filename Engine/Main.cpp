@@ -26,11 +26,14 @@ int main(int argc, char** argv)
 
 	*/
 
+
 	PNG image;
 	read("C:\\Users\\Ruchir Bapat\\Documents\\GitHub\\3DG\\Engine\\Assets\\PNG-Gradient.png", image);
 	//read("C:\\Users\\Ruchir Bapat\\Documents\\GitHub\\3DG\\Engine\\Assets\\GridSizeFour.png", image);
+	//read("C:\\Users\\Ruchir Bapat\\Documents\\GitHub\\3DG\\Engine\\Assets\\PLTE-Test-Images\\1.png", image);
+	//read("C:\\Users\\Ruchir Bapat\\Documents\\GitHub\\3DG\\Engine\\Assets\\PLTE-Test-Images\\6.png", image);
 
-
+	
 	getchar();
 	
 	return 0;

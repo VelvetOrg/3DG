@@ -2,16 +2,23 @@
 #ifndef _PNGREADER_H_
 #define _PNGREADER_H_
 
-//Files
-#include <stdio.h>
 //Our typedefs
 #include "types.h"
 
 //Pixel data meme
 #include <vector>
 
+//For endian meme
+//#include <WinSock2.h>
+
+//Store colours
+#include "colour.h"
+
 //Proper PNG signature
-static GE_BYTE signature[8] = { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }; //Used for comparison
+static const GE_BYTE signature[8] = { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }; //Used for comparison
+
+//Proper PLTE signature
+static const GE_BYTE plte_signature[8] = { 0x50, 0x4C, 0x54, 0x3B }; //Used for comparison
 
 //Various colour types
 /*
@@ -22,6 +29,16 @@ static GE_BYTE signature[8] = { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }
 #define PNG_COLOUR_TYPE_PLTE_INDEX	3
 #define PNG_COLOUR_TYPE_BWA			4 
 #define PNG_COLOUR_TYPE_RGBA		5
+
+//Various filter/recon types
+/*
+	Recon is positive version of filters
+*/
+#define PNG_FILTER_TYPE_NONE		0
+#define PNG_FILTER_TYPE_SUB			1
+#define PNG_FILTER_TYPE_UP			2
+#define PNG_FILTER_TYPE_AVG			3
+#define PNG_FILTER_TYPE_PAETH		4
 
 /*
 PNG Chunks are formatted like this:
@@ -52,12 +69,12 @@ typedef struct IHDR {
 typedef struct PLTE {
 	GE_UINT length;
 	GE_UCHAR type[4] = {};
-
+	Colour* colours;
 };
 
 typedef struct PNG {
 	IHDR IHDR;
-	pngchunk PLTE;
+	PLTE PLTE;
 	std::vector<pngchunk> IDATs;
 	pngchunk IEND;
 	//Vector for colour data

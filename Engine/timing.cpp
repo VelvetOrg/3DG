@@ -1,5 +1,5 @@
 #include "timing.h"
-
+/*
 #include <stdio.h>
 
 #pragma region Time
@@ -102,3 +102,4 @@ GE_UINT16 Date::GetYears() const { return this->_year; }
 GE_UCHAR Date::GetMonths() const { return this->_month; }
 
 #pragma endregion
+*/

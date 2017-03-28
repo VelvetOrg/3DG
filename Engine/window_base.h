@@ -1,6 +1,6 @@
 #ifndef _WINDOW_BASE_H
 #define _WINDOW_BASE_H
-
+/*
 #include "types.h"
 #include "platform.h"
 
@@ -40,8 +40,8 @@ private:
 	//OS variables
 	//TODO: use a packed struct for this
 
-	/* HINSTANCE */ GE_VOIDP _hinstance = nullptr;	//Stores the programs ID in the OS
-	/* HWND */		GE_VOIDP _handle = nullptr;		//Stores the created win32 window context
-};
+	/* HINSTANCE */ //GE_VOIDP _hinstance = nullptr;	//Stores the programs ID in the OS
+	/* HWND */		//GE_VOIDP _handle = nullptr;		//Stores the created win32 window context
+//};
 
 #endif // !_WINDOW_BASE_H

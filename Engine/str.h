@@ -1,29 +1,32 @@
 #ifndef _STR_H
 #define _STR_H
 
-#include "types.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-//Apparently more convenient
-#define GE_STR_LITERAL_CARRIAGE_RETURN '\r'
-#define GE_STR_LITERAL_HORIZONTALTAB '\t'
-#define GE_STR_LITERAL_SINGLE_QUOTE '\''
-#define GE_STR_LITERAL_DOUBLE_QUOTE '\"'
-#define GE_STR_LITERAL_VERTICALTAB '\v'
-#define GE_STR_LITERAL_BACKSPACE '\b'
-#define GE_STR_LITERAL_FORM_FEED '\f'
-#define GE_STR_LITERAL_BACKSLASH '\\'
-#define GE_STR_LITERAL_NEWLINE '\n'
-#define GE_STR_LITERAL_ALERT '\a'
-#define GE_STR_LITERAL_NULL '\0'
+/* makes a file format string relative to the current directory */
+const char* formatFilePath(const char* p);
 
-//TODO: implemented a string class using a Trie structure
+/* quick int (single digit) to char */
+/* inline */ char Qitoc(unsigned short i);
 
-namespace Str
-{
-	//String to int conversion
-	//TODO: implement custom solution
-	extern void IntToStr(GE_INT i, GE_CHAR* buffer, GE_USHORT bufferLength);
-	extern void FloatToStr(GE_FLOAT f, GE_CHAR* buffer, GE_USHORT bufferLength);
+/* safe int (single digit) to char */
+/* inline */ char Sitoc(unsigned short i);
+
+/* quick char to int */
+/* inline */ unsigned short Qctoi(char c);
+
+/* safe char to int */
+/* inline */ unsigned short Sctoi(char c);
+
+void Quitostr(const char* buffer, unsigned short len, unsigned int u);
+void itostr	(const char* buffer, unsigned short len, int i);
+void ftostr	(const char* buffer, unsigned short len, float f);
+void dtostr	(const char* buffer, unsigned short len, double d);
+
+#ifdef __cplusplus
 }
+#endif
 
 #endif

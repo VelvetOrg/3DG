@@ -1,6 +1,6 @@
 #ifndef _TIMING_H
 #define _TIMING_H
-
+/*
 #include "types.h"
 #include <time.h>
 
@@ -74,5 +74,5 @@ private:
 #define GE_LOCAL_TIME	(Time::Local())
 #define GE_UTF_DATE		(Date::UTC())
 #define GE_UTF_TIME		(Time::UTC())
-
+*/
 #endif

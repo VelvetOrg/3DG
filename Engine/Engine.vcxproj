@@ -120,9 +120,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="debug.h" />
+    <ClInclude Include="exception.h" />
     <ClInclude Include="logging.h" />
-    <ClInclude Include="file.h" />
     <ClInclude Include="str.h" />
     <ClInclude Include="timing.h" />
     <ClInclude Include="types.h" />
@@ -131,11 +130,10 @@
     <ClInclude Include="window_win32_internal.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="debug.cpp" />
-    <ClCompile Include="file.cpp" />
+    <ClCompile Include="exception.c" />
     <ClCompile Include="logging.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="str.cpp" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="str.c" />
     <ClCompile Include="timing.cpp" />
     <ClCompile Include="window_base.cpp" />
   </ItemGroup>

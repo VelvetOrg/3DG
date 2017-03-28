@@ -1,6 +1,31 @@
 #ifndef _LOGGING_H
 #define _LOGGING_H
 
+#include "file.h"
+
+//Default log file properties
+#define GE_LOGGING_DEFAULT_FILE "engine.tlog"
+
+//X-macros defines the different types of logging
+// Logging types:
+
+//ERROR: everything has fell apart, abort mission
+//WARN: the process can possibly continue but take caution
+//INFO: some important step along the process has finished, explain it
+//DEBUG: just general programmer logging
+//TRACE: detailed developer messages that are useless to an average person
+
+
+#define GE_LOGGING_TYPES \
+X(ERROR) \
+X(WARN)  \
+X(INFO)  \
+X(DEBUG) \
+X(TRACE)
+
+//Declare a global OutputFile object that all logging will be handled with
+OutputFile log(GE_LOGGING_DEFAULT_FILE);
+
 /*
 #include "timing.h"
 #include "types.h"

@@ -1,4 +1,5 @@
 #include "window_base.h"
+/*
 #include "debug.h"
 
 #ifndef WIN32_LEAN_AND_MEAN
@@ -88,7 +89,7 @@ void Window::Create()
 		typedef void* GE_VOIDP
 
 		thus GE_VOIDP == HWND;
-	*/
+	//
 
 	_handle = CreateWindowEx(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -99,3 +100,4 @@ void Window::Destroy() { Debug::FatalError("Unknown operating system"); };
 GE_SHORT Window::GetHeight() const { return this->_height; };
 GE_SHORT Window::GetWidth() const { return this->_width; };
 GE_STR Window::GetTitle() const { return this->_title; };
+*/

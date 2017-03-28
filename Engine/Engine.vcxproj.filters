@@ -30,6 +30,9 @@
     <Filter Include="Source Files\Files">
       <UniqueIdentifier>{1124d019-bc5a-4a57-8d0a-805eebc1c311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Types">
+      <UniqueIdentifier>{de31eed3-4a58-4a68-b268-202b6e8cb58b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types.h">
@@ -44,9 +47,6 @@
     <ClInclude Include="platform.h">
       <Filter>Header Files\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="debug.h">
-      <Filter>Header Files\Helper</Filter>
-    </ClInclude>
     <ClInclude Include="timing.h">
       <Filter>Header Files\Types</Filter>
     </ClInclude>
@@ -56,30 +56,27 @@
     <ClInclude Include="logging.h">
       <Filter>Header Files\Files</Filter>
     </ClInclude>
-    <ClInclude Include="file.h">
-      <Filter>Header Files\Files</Filter>
+    <ClInclude Include="exception.h">
+      <Filter>Header Files\Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="debug.cpp">
-      <Filter>Source Files\Helper</Filter>
-    </ClCompile>
     <ClCompile Include="window_base.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
     <ClCompile Include="logging.cpp">
-      <Filter>Source Files\Helper</Filter>
-    </ClCompile>
-    <ClCompile Include="timing.cpp">
-      <Filter>Source Files\Helper</Filter>
-    </ClCompile>
-    <ClCompile Include="file.cpp">
       <Filter>Source Files\Files</Filter>
     </ClCompile>
-    <ClCompile Include="str.cpp">
+    <ClCompile Include="timing.cpp">
+      <Filter>Source Files\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="str.c">
+      <Filter>Source Files\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exception.c">
       <Filter>Source Files\Helper</Filter>
     </ClCompile>
   </ItemGroup>

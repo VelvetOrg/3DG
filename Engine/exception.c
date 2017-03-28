@@ -9,14 +9,14 @@
 #define ERR_BUF_LEN 48
 
 /* the default error callback implementation */
-static void __defaulterrorcallback(errno_t code, const char* message, calling_context* cc)
+static void __defaulterrorcallback(errno_t code, const char* message, CallingContext* cc)
 {
 	static const char* cformatstr =  "Error: (%i) %s";
 	static const char* mformatstr =  " | %s";
 	static const char* ccformatstr = " | %s : %s : %i";
 
 	char errcodemessage[ERR_BUF_LEN] = { '\0' };
-	errno_t ret = errtostr(code, &errcodemessage[0], ERR_BUF_LEN);
+	errno_t ret = error_to_str(code, &errcodemessage[0], ERR_BUF_LEN);
 
 	if (ret != 0) 
 	{ 
@@ -38,51 +38,42 @@ static void __defaulterrorcallback(errno_t code, const char* message, calling_co
 QUITTER:
 	putc('\n', stderr);
 
-	getc(stdin);
-	quit(); //assumes that 'exit' will safely release in use memory
+	//getc(stdin);
+	//exit(1); //assumes that 'exit' will safely release in use memory
 }
 
 /* defines the error callback function ptr */
-static error_callback currenterrcallback = __defaulterrorcallback;
+static ErrorCallback currenterrcallback = __defaulterrorcallback;
 
-/* error raw string */
-void errorrs(const char* message) { currenterrcallback(EUNKNOWN, message, NULL); }
-
-/* error code */
-void errorc(errno_t code) { currenterrcallback(code, NULL, NULL); }
-
-/* error string */
-void errors(errno_t code, const char* message) { currenterrcallback(code, message, NULL); }
-
-/* detailed error, includes a calling context */
-void errord(errno_t code, calling_context ctx, const char* message) { currenterrcallback(code, message, &ctx); }
+/* the base call to the active error callback fnptr */
+void __call_error_callback(errno_t e, const char* c, CallingContext cc) { currenterrcallback(e, c, &cc); }
 
 /* set the error callback function pointer to call whenever an error occurs */
-void seterrorcallback(error_callback fnptr) { currenterrcallback = fnptr; }
+void set_error_callback(ErrorCallback fnptr) { currenterrcallback = fnptr; }
 
 /* reverts the internal error callback to default */
-void reseterrorcallback(void) { currenterrcallback = __defaulterrorcallback; }
+void reset_error_callback(void) { currenterrcallback = __defaulterrorcallback; }
 
 /* just a strerror wrapper */
-errno_t errtostr(errno_t code, char* buf, int bufsize)
+errno_t error_to_str(errno_t code, char* buf, int bufsize)
 {
 	errno_t successs;
-	if (code <= 0 || code > ERRSYMCOUNT) { successs = strncpy_s(buf, bufsize, "Unknown error", bufsize-1); }
+	if (code <= 0 || code > ERR_SYM_COUNT) { successs = strncpy_s(buf, bufsize, "Unknown error", bufsize-1); }
 	else								 { successs = strerror_s(buf, bufsize, code); }
 
 	return successs;
 }
 
 /* this logic is run, on an assertion failure */
-void __assertion_failure(calling_context cc, const char* expr)
+void __assertion_failure(CallingContext cc, const char* expr)
 {
 	fputs("Debug assertion failed!\n\n", stderr);
 	fprintf(stderr, "File: %s\n", cc.file);
 	fprintf(stderr, "Func: %s\n", cc.func);
 	fprintf(stderr, "Line: %i\n", cc.line);
 
-	getc(stdin);
-	quit();
+	//getc(stdin);
+	//exit(1);
 }
 
 /* allows the file stream being written to, to be changed */

@@ -1,7 +1,7 @@
 #ifndef _LOGGING_H
 #define _LOGGING_H
 
-#include "file.h"
+//#include "file.h"
 
 //Default log file properties
 #define GE_LOGGING_DEFAULT_FILE "engine.tlog"
@@ -24,7 +24,7 @@ X(DEBUG) \
 X(TRACE)
 
 //Declare a global OutputFile object that all logging will be handled with
-OutputFile log(GE_LOGGING_DEFAULT_FILE);
+//OutputFile log(GE_LOGGING_DEFAULT_FILE);
 
 /*
 #include "timing.h"

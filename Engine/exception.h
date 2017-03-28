@@ -1,23 +1,19 @@
-//TODO: program console
-//TODO: colour console
-//TODO: more versatile error callback
+// @todo: program console
+// @todo: colour console
+// @todo: more versatile error callback
 #ifndef _EXCEPTION_H
 #define _EXCEPTION_H
 
-//TODO: avoid including this:
-#include "types.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+// @todo: avoid including this:
+#include "definitions.h"
 
 /* adds an unknown error to the POSIX codes */
 #define EUNKNOWN 0
 
 /* defines the number of error codes, Linux specific */
-#define ERRSYMCOUNT 140
+#define ERR_SYM_COUNT 140
 
-//bad code
+/* forward declare */
 typedef int errno_t;
 
 /* holds information about the macro caller */
@@ -27,75 +23,63 @@ typedef struct
 	const char* file;
 	const char* func;
 
-} calling_context;
+} CallingContext;
+
+/* allows for a calling context to be generated from the current line */
+#define __CURRENT_CALLING_CONTEXT (CallingContext) { __LINE__, __FILE__, __func__ }
 
 /* defines an error callback function, this is called when ever an error occurs */
 /* errno_t is the POSIX error code */
-/* const char*[1] is detailed error info, or NULL */
-/* calling_context is info about the caller or NULL */
-typedef void(*error_callback)(errno_t, const char*, calling_context*);
-typedef void(*info_callback)(const char*, calling_context*);
+/* const char* is detailed error info, or NULL */
+/* CallingContext is info about the caller or NULL */
+typedef void(*ErrorCallback)(errno_t, const char*, CallingContext*); 
 
 /* set the error callback function pointer to call whenever an error occurs */
-INLINE void seterrorcallback(error_callback fnptr);
+extern INLINE void set_error_callback(ErrorCallback fnptr);
 
 /* reverts the internal error callback to default */
-INLINE void reseterrorcallback(void);
+extern INLINE void reset_error_callback(void);
 
 /* like strerror, converts error code into info string */
 /* recommended buffer size is 48 */
-errno_t errtostr(errno_t code, char* buf, int bufsize);
+extern errno_t error_to_str(errno_t code, char* buf, int bufsize);
 
-/* error code */
-INLINE void errorc(errno_t code);
-
-/* error raw string */
-INLINE void errorrs(const char* message);
-
-/* error string */
-INLINE void errors(errno_t code, const char* message);
-
-/* detailed error, caller */
-INLINE void errord(errno_t code, calling_context ctx, const char* message);
+/* the base call to the active error callback fnptr */
+extern INLINE void __call_error_callback(errno_t e, const char* c, CallingContext cc);
 
 /* this logic is run, on an assertion failure */
-void __assertion_failure(calling_context cc, const char* expr);
-
-/* formatted error */
-//TODO: formatted errors
-//INLINE void errorf(errno_t code, const char* format, ...);
-//INLINE void errorfd(errno_t code, calling_context ctx, const char* format, ...);
-
-/* allows for a calling context to be generated from the current line */
-#define currentcallingcontext (calling_context) { __LINE__, __FILE__, __func__ }
-
-/* allows the file stream being written to, to be changed */
-/* for example stderr is used by default, but a a log file may be wanted */
-/* INLINE void seterrorstream(FILE* stream); */
-
-/* returns the current file stream being written to */
-/* INLINE FILE* geterrorstream( void ); */
+extern void __assertion_failure(CallingContext cc, const char* expr);
 
 /* literally just like assert.h, but without an additional include */
 #ifdef NDEBUG
-#define asrt(expression) (void(0))
+#define ASSRT(expression) (void(0))
 #else
-#define asrt(expression) ( (expression)?((void)0) : __assertion_failure(currentcallingcontext, #expression) )
+#define ASSRT(expression) ( (expression)?((void)0) : __assertion_failure(__CURRENT_CALLING_CONTEXT, #expression) )
 #endif
 
-#define sasrt(expression) static_assert(expression)
+#define SASSRT(condition, err) static_assert(condition, err)
 
-/* allow for detailed error messages without a whole lot of typing */
-#define err(code)			errord(code, currentcallingcontext, NULL);
-#define errs(code, message)	errord(code, currentcallingcontext, message);
-//#define errf(n, m, ...)
+/* wrapper calls */
+#define ERROR(code)				__call_error_callback(code, NULL, __CURRENT_CALLING_CONTEXT);
+#define ERROR_S(code, message)	__call_error_callback(code, message, __CURRENT_CALLING_CONTEXT);
+#define ERROR_RS(message)		__call_error_callback(EUNKNOWN, message, __CURRENT_CALLING_CONTEXT);
+#define ERROR_C(n) ERROR(n)
 
-/* quits the program, should only be used in an emergency */
-#define quit() exit(1)
-#define fquit() abort()
+#if TO_DO
+/* formatted error */
+INLINE void errorf(errno_t code, const char* format, ...);
+INLINE void errorfd(errno_t code, calling_context ctx, const char* format, ...);
 
-#ifdef __cplusplus
-}
+/* allows the file stream being written to, to be changed */
+/* for example stderr is used by default, but a a log file may be wanted */
+INLINE void seterrorstream(FILE* stream);
+
+/* returns the current file stream being written to */
+INLINE FILE* geterrorstream( void );
+
+#define ERROR_F(n, m, ...)
+
+//...
 #endif
 
 #endif // !_EXCEPTION_H

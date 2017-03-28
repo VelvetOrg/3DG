@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="definitions.h" />
     <ClInclude Include="exception.h" />
     <ClInclude Include="logging.h" />
     <ClInclude Include="str.h" />
